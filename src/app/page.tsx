@@ -1,153 +1,14 @@
-"use client";
-
 import Image from "next/image";
-
-import { useEffect, useRef } from 'react';
-import 'keen-slider/keen-slider.min.css';
+import Navigation from "@/components/Navigation";
+import UniversitySliderClient from "@/components/UniversitySliderClient";
 
 export default function Home() {
-  
-  const sliderRef = useRef(null);
-
-  useEffect(() => {
-    const keenSlider = async () => {
-      const KeenSlider = (await import('keen-slider')).default;
-      
-      if (sliderRef.current) {
-        const slider = new KeenSlider(
-          sliderRef.current,
-          {
-            loop: true,
-            mode: 'free',
-            slides: {
-              origin: 'center',
-              perView: 2.5,
-              spacing: 16,
-            },
-            breakpoints: {
-              '(min-width: 640px)': {
-                slides: {
-                  perView: 3.5,
-                  spacing: 20,
-                },
-              },
-              '(min-width: 1024px)': {
-                slides: {
-                  perView: 5.5,
-                  spacing: 24,
-                },
-              },
-            },
-          },
-          [
-            (slider) => {
-              let timeout: ReturnType<typeof setTimeout>;
-              let mouseOver = false;
-              function clearNextTimeout() {
-                clearTimeout(timeout);
-              }
-              function nextTimeout() {
-                clearTimeout(timeout);
-                if (mouseOver) return;
-                timeout = setTimeout(() => {
-                  slider.next();
-                }, 3000);
-              }
-              slider.on("created", () => {
-                slider.container.addEventListener("mouseover", () => {
-                  mouseOver = true;
-                  clearNextTimeout();
-                });
-                slider.container.addEventListener("mouseout", () => {
-                  mouseOver = false;
-                  nextTimeout();
-                });
-                nextTimeout();
-              });
-              slider.on("dragStarted", clearNextTimeout);
-              slider.on("animationEnded", nextTimeout);
-              slider.on("updated", nextTimeout);
-            },
-          ]
-        );
-      }
-    };
-
-    keenSlider();
-  }, []);
-
   return (
     <div className="min-h-screen bg-white" style={{ fontFamily: 'Poppins, sans-serif' }}>
-      {/* Top Bar */}
-      <div className="bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center py-2 text-xs sm:text-sm gap-2 sm:gap-0">
-          <div className="flex items-center space-x-2">
-            <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-            <span className="text-gray-700 text-xs sm:text-sm">Contact Your Nearest Centre</span>
-          </div>
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            <a href="#" className="text-gray-700 hover:text-blue-600 text-xs sm:text-sm">Our Centres</a>
-            <button className="bg-yellow-400 text-gray-900 px-2 sm:px-3 py-1 rounded text-xs sm:text-sm font-medium hover:bg-yellow-500">Free Demo</button>
-            <a href="#" className="text-gray-700 hover:text-blue-600 text-xs sm:text-sm">Student Login</a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Header */}
-      <header className="bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-3 sm:py-4">
-            {/* Logo */}
-            <div className="flex items-center">
-              <Image 
-                src="/logo.png" 
-                alt="Gateway Global Logo"
-                width={140}
-                height={47}
-                className="object-contain w-28 h-auto sm:w-36 lg:w-44"
-              />
-            </div>
-            
-            {/* Mobile Menu Button */}
-            <button className="lg:hidden p-2">
-              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-            
-            {/* Navigation */}
-            <nav className="hidden lg:flex space-x-4 xl:space-x-6 items-center text-sm">
-              <a href="#" className="text-blue-600 font-medium pb-1">Home</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">About</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 font-medium flex items-center">
-                Universities
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 font-medium flex items-center">
-                Countries
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 font-medium flex items-center">
-                Services
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Success</a>
-              <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Navigation />
 
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
+      <section id="hero" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden max-w-full" style={{ paddingTop: '160px' }}>
         {/* Background Decorative Elements - Paper Airplanes and Planes */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Paper Airplane - Upper Left */}
@@ -176,7 +37,7 @@ export default function Home() {
           <div className="absolute bottom-32 left-[8%] opacity-25">
             <svg className="w-12 h-12 text-gray-400 transform rotate-45" fill="currentColor" viewBox="0 0 24 24">
               <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-            </svg>
+          </svg>
           </div>
         </div>
         
@@ -197,7 +58,7 @@ export default function Home() {
                 Specialized admissions guidance for Ivy League, Russell Group, German & Italian Public Universities
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <button className="text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-base sm:text-lg font-semibold flex items-center justify-center gap-2 transition-all" style={{ backgroundColor: '#f46c44' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e35a34'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#f46c44'}>
+                <button className="text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-base sm:text-lg font-semibold flex items-center justify-center gap-2 transition-all hover:opacity-90" style={{ backgroundColor: '#f46c44' }}>
                   <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
@@ -222,9 +83,9 @@ export default function Home() {
                 />
                 {/* Graduation Cap Image - Smaller size to show background */}
                 <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 10 }}>
-                  <Image 
+                <Image 
                     src="/logo-design.png" 
-                    alt="Graduation Cap and Cityscape"
+                  alt="Graduation Cap and Cityscape"
                     width={500}
                     height={320}
                     className="object-contain drop-shadow-2xl"
@@ -237,8 +98,8 @@ export default function Home() {
       </section>
 
       {/* Statistics Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div className="flex flex-col items-center">
               <div className="flex justify-center mb-4">
@@ -280,180 +141,99 @@ export default function Home() {
         </div>
       </section>
 
-      {/* University Partners Section with Keen Slider */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            International University Partners
-          </h2>
-          <div ref={sliderRef} className="keen-slider">
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university1.svg" 
-                  alt="University Partner 1"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university2.svg" 
-                  alt="University Partner 2"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university3.svg" 
-                  alt="University Partner 3"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university4.svg" 
-                  alt="University Partner 4"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university5.svg" 
-                  alt="University Partner 5"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university6.svg" 
-                  alt="University Partner 6"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university7.svg" 
-                  alt="University Partner 7"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university8.svg" 
-                  alt="University Partner 8"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university9.svg" 
-                  alt="University Partner 9"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university10.svg" 
-                  alt="University Partner 10"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <UniversitySliderClient />
 
       {/* Why GAway Global Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl font-bold text-center text-gray-900 mb-6">
-            Why <span style={{ color: '#f46c44' }}>GAway</span> Global ?
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+          <h2 className="text-5xl font-bold text-center text-gray-900 mb-12">
+            <span style={{ color: '#f46c44' }}>Why</span> GAway Global ?
           </h2>
           <div className="relative">
-            {/* Horizontal Line */}
-            <div className="absolute top-16 left-0 right-0 h-1" style={{ backgroundColor: '#f46c44' }}></div>
+            {/* Horizontal Line with circles at ends */}
+            <div className="absolute top-0 left-0 right-0 h-1" style={{ backgroundColor: '#f46c44' }}>
+              {/* Left circle */}
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full" style={{ backgroundColor: '#f46c44' }}></div>
+              {/* Right circle */}
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full" style={{ backgroundColor: '#f46c44' }}></div>
+            </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 relative pt-12">
-              {/* Point 1 */}
-              <div className="text-center">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 relative z-10" style={{ backgroundColor: '#f46c44' }}>
-                  <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a2 2 0 002-2v-4a2 2 0 00-2-2H6a2 2 0 00-2 2v4a2 2 0 002 2zm8-2v4a2 2 0 002 2h2a2 2 0 002-2v-4a2 2 0 00-2-2h-2z" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative pt-20">
+              {/* Point 1 - Specialized ONLY */}
+              <div className="text-center relative">
+                {/* Vertical line */}
+                <div className="absolute w-0.5 h-16 left-1/2 -translate-x-1/2" style={{ backgroundColor: '#6b7280', top: '-80px' }}></div>
+                <div className="relative">
+                  <div className="w-20 h-20 rounded-full border-4 flex items-center justify-center mx-auto mb-3 bg-white relative z-10" style={{ borderColor: '#f46c44' }}>
+                    <svg className="w-10 h-10" style={{ color: '#6b7280' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Specialized ONLY</h3>
-                <p className="text-gray-600 text-lg leading-relaxed">in elite admissions</p>
+                  <h3 className="text-xl font-semibold mb-1" style={{ color: '#6b7280' }}>
+                    Specialized ONLY
+                  </h3>
+                  <p className="text-lg leading-relaxed" style={{ color: '#f46c44' }}>
+                    in elite admissions
+                  </p>
+                </div>
               </div>
               
-              {/* Point 2 */}
-              <div className="text-center">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 relative z-10" style={{ backgroundColor: '#f46c44' }}>
-                  <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              {/* Point 2 - 10+ yrs experience */}
+              <div className="text-center relative">
+                {/* Vertical line */}
+                <div className="absolute w-0.5 h-28 left-1/2 -translate-x-1/2" style={{ backgroundColor: '#6b7280', top: '-80px' }}></div>
+                <div className="relative mt-12">
+                  <div className="w-20 h-20 rounded-full border-4 flex items-center justify-center mx-auto mb-3 bg-white relative z-10" style={{ borderColor: '#f46c44' }}>
+                    <svg className="w-10 h-10" style={{ color: '#6b7280' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">10+ yrs</h3>
-                <p className="text-gray-600 text-lg leading-relaxed">experience</p>
+                  <h3 className="text-xl font-semibold mb-1" style={{ color: '#f46c44' }}>
+                    10+ <span style={{ color: '#6b7280' }}>yrs</span>
+                  </h3>
+                  <p className="text-lg leading-relaxed" style={{ color: '#6b7280' }}>
+                    experience
+                  </p>
+                </div>
               </div>
               
-              {/* Point 3 */}
-              <div className="text-center">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 relative z-10" style={{ backgroundColor: '#f46c44' }}>
-                  <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a2 2 0 002-2v-4a2 2 0 00-2-2H6a2 2 0 00-2 2v4a2 2 0 002 2zm8-2v4a2 2 0 002 2h2a2 2 0 002-2v-4a2 2 0 00-2-2h-2z" />
+              {/* Point 3 - Transparent process */}
+              <div className="text-center relative">
+                {/* Vertical line */}
+                <div className="absolute w-0.5 h-16 left-1/2 -translate-x-1/2" style={{ backgroundColor: '#6b7280', top: '-80px' }}></div>
+                <div className="relative">
+                  <div className="w-20 h-20 rounded-full border-4 flex items-center justify-center mx-auto mb-3 bg-white relative z-10" style={{ borderColor: '#f46c44' }}>
+                    <svg className="w-10 h-10" style={{ color: '#6b7280' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      <line x1="2" y1="2" x2="22" y2="22" stroke="currentColor" strokeWidth={2} strokeLinecap="round"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">Personalized</h3>
-                <p className="text-gray-600 text-lg leading-relaxed">counselling & guidance</p>
+                  <h3 className="text-lg font-semibold mb-1" style={{ color: '#f46c44' }}>
+                    Transparent process
+                  </h3>
+                  <p className="text-base leading-relaxed" style={{ color: '#6b7280' }}>
+                    (No hidden fees)
+                  </p>
+                </div>
               </div>
               
-              {/* Point 4 */}
-              <div className="text-center">
-                <div className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 relative z-10" style={{ backgroundColor: '#f46c44' }}>
-                  <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              {/* Point 4 - Country-specific experts */}
+              <div className="text-center relative">
+                {/* Vertical line */}
+                <div className="absolute w-0.5 h-28 left-1/2 -translate-x-1/2" style={{ backgroundColor: '#6b7280', top: '-80px' }}></div>
+                <div className="relative mt-12">
+                  <div className="w-20 h-20 rounded-full border-4 flex items-center justify-center mx-auto mb-3 bg-white relative z-10" style={{ borderColor: '#f46c44' }}>
+                    <svg className="w-10 h-10" style={{ color: '#6b7280' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">High Success</h3>
-                <p className="text-gray-600 text-lg leading-relaxed">rate & support</p>
+                  <h3 className="text-lg font-semibold mb-1" style={{ color: '#f46c44' }}>
+                    Country-specific
+                  </h3>
+                  <p className="text-lg leading-relaxed" style={{ color: '#f46c44' }}>
+                    experts
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -461,8 +241,8 @@ export default function Home() {
       </section>
 
       {/* Trusted Partner Section */}
-      <section className="py-28 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-28 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
             {/* LEFT IMAGE STACK - Tilted Container */}
@@ -535,9 +315,9 @@ export default function Home() {
                     Excellence
                   </span>
                 </div>
-                {/* Orange Line Underneath */}
-                <div className="absolute left-0 top-12 w-[140px] h-[1px]" style={{ backgroundColor: '#f46c44' }}>
-                  <div className="absolute right-0 top-0 w-2 h-2 rounded-full" style={{ backgroundColor: '#f46c44' }}></div>
+                {/* Orange Line Underneath - Full Width */}
+                <div className="absolute left-0 top-12 w-[85%] h-[3px]" style={{ backgroundColor: '#f46c44' }}>
+                  <div className="absolute right-0 top-0 w-3 h-3 rounded-full" style={{ backgroundColor: '#f46c44', transform: 'translateY(-50%) translateX(50%)' }}></div>
                 </div>
               </div>
 
@@ -584,7 +364,7 @@ export default function Home() {
 
               {/* CTA Buttons */}
               <div className="mt-12 flex items-center gap-6">
-                <button className="text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg transition-all" style={{ backgroundColor: '#f46c44' }} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#e35a34'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#f46c44'}>
+                <button className="text-white px-8 py-3 rounded-full font-semibold text-lg shadow-lg transition-all hover:opacity-90" style={{ backgroundColor: '#f46c44' }}>
                   About Us
                 </button>
 
@@ -599,199 +379,311 @@ export default function Home() {
       </section>
 
       {/* Ivy League Testimonial Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 overflow-hidden" style={{ backgroundColor: '#ffeae5' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Video Testimonials</h2>
+          <h2 className="text-4xl font-bold text-center mb-12">
+            <span style={{ color: '#f46c44' }}>Video</span>{" "}
+            <span className="text-gray-700">Testimonials</span>
+          </h2>
           
-          <div className="relative max-w-2xl mx-auto">
-            {/* Left Arrow */}
-            <button className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors">
-              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            
-            {/* Right Arrow */}
-            <button className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-100 transition-colors">
-              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-            
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="relative">
-                <div className="aspect-video bg-gray-900 rounded-lg overflow-hidden">
-                  <Image 
-                    src="/img.jpg"
-                    alt="Testimonial Video"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                    <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white text-lg">
-                      ▶
+          <div className="relative max-w-6xl mx-auto">
+            {/* Outer Pink Background */}
+            <div className="relative rounded-[80px] p-12" style={{ backgroundColor: '#ffddd4', opacity: 0.85 }}>
+              <div className="flex flex-col lg:flex-row items-center gap-8">
+                {/* Video Container with Tilted Border */}
+                <div className="flex-1 w-full lg:max-w-2xl">
+                  <div className="relative rounded-3xl overflow-hidden border-4 border-orange-500 shadow-2xl bg-gray-900" style={{ transform: 'rotate(-2deg)' }}>
+                    <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+                      <iframe
+                        className="absolute top-0 left-0 w-full h-full"
+                        src="https://www.youtube.com/embed/aJTjHXbOlFI"
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
                     </div>
                   </div>
                 </div>
+              
+                {/* Speech Bubble */}
+                <div className="w-full lg:w-96 bg-gray-700 rounded-3xl p-8 shadow-xl">
+                  <h3 className="text-3xl font-bold mb-4" style={{ color: '#d4ff00' }}>Ivy League</h3>
+                  <p className="text-white text-sm leading-relaxed">
+                    My <span style={{ color: '#d4ff00' }} className="font-semibold">Ivy League</span> admit was made possible by gaway global's{' '}
+                    <span style={{ color: '#d4ff00' }} className="font-semibold">extensive admissions counselling support</span>{' '}
+                    with my applications. Moreover, their online portal
+                  </p>
               </div>
-              <div className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-16 h-16 bg-gray-200 rounded-full overflow-hidden mr-4">
-                    <Image 
-                      src="https://images.unsplash.com/photo-1507000475077-5f44f8db76b?w=150&h=150&fit=crop&crop=face"
-                      alt="Sarah Johnson"
-                      width={64}
-                      height={64}
-                      className="object-cover"
-                    />
                   </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Ivy League</h4>
-                    <p className="text-gray-700 text-sm mb-2">Sarah Johnson</p>
-                    <p className="text-gray-700">"The guidance I received helped me get into my dream university. The team was incredibly supportive throughout the entire application process."</p>
-                    <div className="flex items-center">
-                      <div className="flex text-yellow-400">
-                        {[...Array(5)].map((_, i) => (
-                          <span key={i}>★</span>
-                        ))}
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            
+            {/* Navigation Arrows */}
+            <div className="relative mt-8 flex justify-center gap-8">
+              <button className="w-16 h-16 rounded-full bg-orange-500 flex items-center justify-center text-white hover:bg-orange-600 transition-colors shadow-lg">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button className="w-16 h-16 rounded-full bg-orange-500 flex items-center justify-center text-white hover:bg-orange-600 transition-colors shadow-lg">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* New Image Testimonials Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Image Testimonials</h2>
+      {/* Image Testimonials Section */}
+      <section className="py-16 overflow-hidden" style={{ backgroundColor: '#FCEEEB' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+          <h2 className="text-4xl font-bold text-center mb-12">
+            <span style={{ color: '#FF8C6A' }}>Image</span>{" "}
+            <span className="text-gray-800">Testimonials</span>
+          </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Testimonial 1 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="relative">
-                <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden">
-                  <Image 
-                    src="https://images.unsplash.com/photo-1522202176988-8838c5c5f49?w=400&h=300&fit=crop&crop=center"
-                    alt="Student Testimonial 1"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-16 h-16 bg-gray-200 rounded-full overflow-hidden mr-4">
-                    <Image 
-                      src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face"
-                      alt="Student 1"
-                      width={64}
-                      height={64}
-                      className="object-cover"
+          <div className="relative">
+            {/* Navigation Arrows */}
+            <button className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center hover:opacity-80 transition-opacity" style={{ color: '#FF8C6A' }}>
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center hover:opacity-80 transition-opacity" style={{ color: '#FF8C6A' }}>
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Testimonial Cards */}
+            <div className="flex items-start justify-center gap-10 px-16" style={{ display: 'flex', flexWrap: 'nowrap', width: '100%' }}>
+              {/* Testimonial 1 - Aditya Sharma */}
+              <div className="flex-shrink-0" style={{ perspective: '800px', transform: 'rotate(2deg)' }}>
+                <div className="rounded-3xl p-8 flex flex-col relative overflow-visible" style={{ width: '380px', height: '500px' }}>
+                  {/* Border from image file */}
+                  <div className="absolute rounded-3xl pointer-events-none" style={{ 
+                    left: '0',
+                    top: '0',
+                    width: '380px',
+                    height: '500px',
+                    transform: 'rotateY(18deg)',
+                    transformOrigin: 'right center',
+                    transformStyle: 'preserve-3d',
+                    zIndex: 0
+                  }}>
+                    <img 
+                      src="/image testimonial.png" 
+                      alt="border"
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'fill', 
+                        display: 'block',
+                        borderRadius: '24px'
+                      }}
                     />
                   </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Aditya Sharma</h4>
-                    <p className="text-gray-700 text-sm mb-2">Harvard University</p>
-                    <p className="text-gray-700">"One of our proud alumni has succesfully completed bachelor degree in Germany University"</p>
-                    <div className="flex items-center">
-                      <div className="flex text-yellow-400">
-                        {Array(5).fill(0).map((_, i) => (
-                          <span key={i}>★</span>
-                        ))}
-                      </div>
+                  {/* Content background */}
+                  <div className="absolute rounded-3xl" style={{ 
+                    left: '4px',
+                    top: '4px',
+                    width: '372px',
+                    height: '492px',
+                    backgroundColor: '#FFF5F2',
+                    zIndex: 1
+                  }}></div>
+                  
+                  {/* Photo in upper right corner */}
+                  <div className="absolute top-6 right-6 w-32 h-40 rounded-xl overflow-hidden border-2 border-white shadow-md z-10" style={{ transform: 'rotate(3deg) rotateY(18deg)', transformOrigin: 'right center', transformStyle: 'preserve-3d' }}>
+                    <Image
+                      src="/imgt1.png"
+                      alt="Aditya Sharma"
+                      width={128}
+                      height={160}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Name */}
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4 pr-36 relative z-10">Aditya Sharma</h3>
+                  
+                  {/* Text */}
+                  <p className="text-base mb-6 leading-relaxed pr-36 relative z-10" style={{ color: '#FF8C6A' }}>
+                    One of our proud alumni, has successfully completed his Bachelor's degree in Germany.
+                  </p>
+                  
+                  {/* University Logo - Harvard */}
+                  <div className="mt-auto flex items-center gap-3 relative z-10">
+                    <div className="w-14 h-14 flex items-center justify-center" style={{ backgroundColor: '#A51C30' }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" fill="white"/>
+                        <text x="12" y="16" textAnchor="middle" fill="white" fontSize="8" fontWeight="bold">VERI</text>
+                        <text x="12" y="20" textAnchor="middle" fill="white" fontSize="8" fontWeight="bold">TAS</text>
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-xl font-bold text-gray-800">HARVARD</div>
+                      <div className="text-xs text-gray-600 font-medium">UNIVERSITY</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Testimonial 2 - Rohan Gupta */}
+              <div className="flex-shrink-0" style={{ perspective: '800px', transform: 'rotate(2deg)' }}>
+                <div className="rounded-3xl p-8 flex flex-col relative overflow-visible" style={{ width: '380px', height: '500px' }}>
+                  {/* Border from image file */}
+                  <div className="absolute rounded-3xl pointer-events-none" style={{ 
+                    left: '0',
+                    top: '0',
+                    width: '380px',
+                    height: '500px',
+                    transform: 'rotateY(18deg)',
+                    transformOrigin: 'right center',
+                    transformStyle: 'preserve-3d',
+                    zIndex: 0
+                  }}>
+                    <img 
+                      src="/image testimonial.png" 
+                      alt="border"
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'fill', 
+                        display: 'block',
+                        borderRadius: '24px'
+                      }}
+                    />
+                  </div>
+                  {/* Content background */}
+                  <div className="absolute rounded-3xl" style={{ 
+                    left: '4px',
+                    top: '4px',
+                    width: '372px',
+                    height: '492px',
+                    backgroundColor: '#FFF5F2',
+                    zIndex: 1
+                  }}></div>
+                  
+                  {/* Photo in upper right corner */}
+                  <div className="absolute top-6 right-6 w-32 h-40 rounded-xl overflow-hidden border-2 border-white shadow-md z-10" style={{ transform: 'rotate(3deg) rotateY(18deg)', transformOrigin: 'right center', transformStyle: 'preserve-3d' }}>
+                    <Image
+                      src="/img3.png"
+                      alt="Rohan Gupta"
+                      width={128}
+                      height={160}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Name */}
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4 pr-36 relative z-10">Rohan Gupta</h3>
+                  
+                  {/* Text */}
+                  <p className="text-base mb-6 leading-relaxed pr-36 relative z-10" style={{ color: '#FF8C6A' }}>
+                    One of our proud alumni, has successfully completed his Bachelor's degree in Germany.
+                  </p>
+                  
+                  {/* University Logo - Yale */}
+                  <div className="mt-auto flex items-center gap-3 relative z-10">
+                    <div className="w-14 h-14 flex items-center justify-center" style={{ backgroundColor: '#00356B' }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" fill="white"/>
+                        <path d="M8 10h8v2H8v-2zm0 4h8v2H8v-2z" fill="white"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-xl font-bold" style={{ color: '#00356B', fontFamily: 'serif' }}>Yale University</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Testimonial 3 - Saumya Sharma */}
+              <div className="flex-shrink-0" style={{ perspective: '800px', transform: 'rotate(2deg)' }}>
+                <div className="rounded-3xl p-8 flex flex-col relative overflow-visible" style={{ width: '380px', height: '500px' }}>
+                  {/* Border from image file */}
+                  <div className="absolute rounded-3xl pointer-events-none" style={{ 
+                    left: '0',
+                    top: '0',
+                    width: '380px',
+                    height: '500px',
+                    transform: 'rotateY(18deg)',
+                    transformOrigin: 'right center',
+                    transformStyle: 'preserve-3d',
+                    zIndex: 0
+                  }}>
+                    <img 
+                      src="/image testimonial.png" 
+                      alt="border"
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'fill', 
+                        display: 'block',
+                        borderRadius: '24px'
+                      }}
+                    />
+                  </div>
+                  {/* Content background */}
+                  <div className="absolute rounded-3xl" style={{ 
+                    left: '4px',
+                    top: '4px',
+                    width: '372px',
+                    height: '492px',
+                    backgroundColor: '#FFF5F2',
+                    zIndex: 1
+                  }}></div>
+                  
+                  {/* Photo in upper right corner */}
+                  <div className="absolute top-6 right-6 w-32 h-40 rounded-xl overflow-hidden border-2 border-white shadow-md z-10" style={{ transform: 'rotate(3deg) rotateY(18deg)', transformOrigin: 'right center', transformStyle: 'preserve-3d' }}>
+                    <Image
+                      src="/img.jpg"
+                      alt="Saumya Sharma"
+                      width={128}
+                      height={160}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Name */}
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4 pr-36 relative z-10">Saumya Sharma</h3>
+                  
+                  {/* Text */}
+                  <p className="text-base mb-6 leading-relaxed pr-36 relative z-10" style={{ color: '#FF8C6A' }}>
+                    One of our proud alumni, has successfully completed his Bachelor's degree in Germany.
+                  </p>
+                  
+                  {/* University Logo - Oxford */}
+                  <div className="mt-auto flex items-center gap-3 relative z-10">
+                    <div className="w-14 h-14 flex items-center justify-center" style={{ backgroundColor: '#002147' }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" fill="white"/>
+                        <circle cx="12" cy="12" r="3" fill="white"/>
+                        <path d="M9 9l6 6M15 9l-6 6" stroke="white" strokeWidth="1"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="text-xl font-bold" style={{ color: '#002147', fontFamily: 'serif' }}>UNIVERSITY OF OXFORD</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Testimonial 2 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="relative">
-                <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden">
-                  <Image 
-                    src="https://images.unsplash.com/photo-1522202176988-8838c5c5f49?w=400&h=300&fit=crop&crop=center"
-                    alt="Student Testimonial 2"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-16 h-16 bg-gray-200 rounded-full overflow-hidden mr-4">
-                    <Image 
-                      src="https://images.unsplash.com/photo-1507000475077-5f44f8db76b?w=150&h=150&fit=crop&crop=face"
-                      alt="Student 2"
-                      width={64}
-                      height={64}
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Abhay Nigam</h4>
-                    <p className="text-gray-700 text-sm mb-2">Stanford University</p>
-                    <p className="text-gray-700">"Amazing experience from start to finish. The team's expertise helped me get into my dream program with full scholarship."</p>
-                    <div className="flex items-center">
-                      <div className="flex text-yellow-400">
-                        {Array(5).fill(0).map((_, i) => (
-                          <span key={i}>★</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-              <div className="relative">
-                <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden">
-                  <Image 
-                    src="https://images.unsplash.com/photo-1522202176988-8838c5c5f49?w=400&h=300&fit=crop&crop=center"
-                    alt="Student Testimonial 3"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center mb-4">
-                  <div className="w-16 h-16 bg-gray-200 rounded-full overflow-hidden mr-4">
-                    <Image 
-                      src="https://images.unsplash.com/photo-1438761681033-6461f4a0f57?w=150&h=150&fit=crop&crop=face"
-                      alt="Student 3"
-                      width={64}
-                      height={64}
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Sanjay Purohit</h4>
-                    <p className="text-gray-700 text-sm mb-2">MIT</p>
-                    <p className="text-gray-700">"Professional and personalized service throughout. They made the complex application process feel simple and manageable. Highly recommended!"</p>
-                    <div className="flex items-center">
-                      <div className="flex text-yellow-400">
-                        {Array(5).fill(0).map((_, i) => (
-                          <span key={i}>★</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Pagination Dots */}
+            <div className="flex justify-center gap-2 mt-10">
+              <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#FCEEEB' }}></div>
+              <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#FF8C6A' }}></div>
+              <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#FCEEEB' }}></div>
             </div>
           </div>
         </div>
       </section>
 {/* Case Studies Section */}
-<section className="py-16 bg-gray-50">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section className="py-16 bg-gray-50 overflow-hidden">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
     
     {/* Header with orange bar */}
     <div className="text-center mb-12">
@@ -892,93 +784,136 @@ export default function Home() {
 </section>
 
       {/* Top Universities Hub Section */}
-    {/* Top Universities Hub Section */}
-<section className="py-20 bg-[#FDEDE6]">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section className="py-20 overflow-hidden" style={{ backgroundColor: '#ffeae5' }}>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
 
     {/* Heading */}
-    <div className="text-center mb-14">
-      <h2 className="text-4xl md:text-5xl font-bold">
-        <span className="text-orange-500">Top Universities</span>{" "}
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <span style={{ color: '#f46c44' }}>Top Universities</span>{" "}
         <span className="text-gray-700">Hub</span>
       </h2>
-      <p className="mt-4 text-gray-600 max-w-3xl mx-auto">
+      <p className="mt-4 text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
         Explore globally recognized university groups across major study destinations,
         carefully curated for ambitious international students.
       </p>
     </div>
 
-    {/* Universities */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 items-start">
+    {/* Universities Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
 
       {/* Ivy League */}
-      <div className="text-center">
-        <div className="relative mx-auto w-[260px] h-[160px] rotate-[-2deg]">
-          <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Statue_of_Liberty_7.jpg"
-            alt="Ivy League Universities"
-            fill
-            className="object-cover rounded-[22px] border-2 border-orange-400"
-          />
+      <div className="text-center group">
+        <div className="relative mx-auto w-full max-w-[280px] mb-6">
+          <svg viewBox="0 0 300 200" className="w-full h-auto" style={{ filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))' }}>
+            <defs>
+              <clipPath id="tiltedClip1">
+                <path d="M 50 8 Q 20 8 15 35 L 15 165 Q 15 192 42 196 L 250 184 Q 285 184 290 155 L 290 45 Q 290 20 265 20 L 50 8 Z" />
+              </clipPath>
+            </defs>
+            <image
+              href="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=400&h=300&fit=crop"
+              x="0" y="0" width="300" height="200"
+              clipPath="url(#tiltedClip1)"
+              preserveAspectRatio="xMidYMid slice"
+            />
+            <path d="M 50 8 Q 20 8 15 35 L 15 165 Q 15 192 42 196 L 250 184 Q 285 184 290 155 L 290 45 Q 290 20 265 20 L 50 8 Z" 
+                  fill="none" 
+                  stroke="#f46c44" 
+                  strokeWidth="3" />
+          </svg>
         </div>
-        <h3 className="mt-6 text-lg font-semibold text-gray-800">
+        <h3 className="text-xl font-bold text-gray-700 mb-2">
           Ivy League Universities
         </h3>
-        <p className="text-sm text-orange-500">
-          America’s most prestigious institutions
+        <p className="text-sm font-medium" style={{ color: '#f46c44' }}>
+          America&apos;s most prestigious institutions
         </p>
       </div>
 
       {/* Russell Group */}
-      <div className="text-center">
-        <div className="relative mx-auto w-[260px] h-[160px] rotate-[1.5deg]">
-          <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Westminster_Palace_and_Big_Ben.jpg"
-            alt="Russell Group Universities"
-            fill
-            className="object-cover rounded-[22px] border-2 border-orange-400"
-          />
+      <div className="text-center group">
+        <div className="relative mx-auto w-full max-w-[280px] mb-6">
+          <svg viewBox="0 0 300 200" className="w-full h-auto" style={{ filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))' }}>
+            <defs>
+              <clipPath id="tiltedClip2">
+                <path d="M 50 8 Q 20 8 15 35 L 15 165 Q 15 192 42 196 L 250 184 Q 285 184 290 155 L 290 45 Q 290 20 265 20 L 50 8 Z" />
+              </clipPath>
+            </defs>
+            <image
+              href="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=400&h=300&fit=crop"
+              x="0" y="0" width="300" height="200"
+              clipPath="url(#tiltedClip2)"
+              preserveAspectRatio="xMidYMid slice"
+            />
+            <path d="M 50 8 Q 20 8 15 35 L 15 165 Q 15 192 42 196 L 250 184 Q 285 184 290 155 L 290 45 Q 290 20 265 20 L 50 8 Z" 
+                  fill="none" 
+                  stroke="#f46c44" 
+                  strokeWidth="3" />
+          </svg>
         </div>
-        <h3 className="mt-6 text-lg font-semibold text-gray-800">
+        <h3 className="text-xl font-bold text-gray-700 mb-2">
           Russell Group Universities
         </h3>
-        <p className="text-sm text-orange-500">
+        <p className="text-sm font-medium" style={{ color: '#f46c44' }}>
           Leading UK research universities
         </p>
       </div>
 
       {/* TU9 */}
-      <div className="text-center">
-        <div className="relative mx-auto w-[260px] h-[160px] rotate-[-1.5deg]">
-          <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Reichstag_building_Berlin_view_from_west_before_sunset.jpg"
-            alt="TU9 Universities"
-            fill
-            className="object-cover rounded-[22px] border-2 border-orange-400"
-          />
+      <div className="text-center group">
+        <div className="relative mx-auto w-full max-w-[280px] mb-6">
+          <svg viewBox="0 0 300 200" className="w-full h-auto" style={{ filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))' }}>
+            <defs>
+              <clipPath id="tiltedClip3">
+                <path d="M 50 8 Q 20 8 15 35 L 15 165 Q 15 192 42 196 L 250 184 Q 285 184 290 155 L 290 45 Q 290 20 265 20 L 50 8 Z" />
+              </clipPath>
+            </defs>
+            <image
+              href="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&h=300&fit=crop"
+              x="0" y="0" width="300" height="200"
+              clipPath="url(#tiltedClip3)"
+              preserveAspectRatio="xMidYMid slice"
+            />
+            <path d="M 50 8 Q 20 8 15 35 L 15 165 Q 15 192 42 196 L 250 184 Q 285 184 290 155 L 290 45 Q 290 20 265 20 L 50 8 Z" 
+                  fill="none" 
+                  stroke="#f46c44" 
+                  strokeWidth="3" />
+          </svg>
         </div>
-        <h3 className="mt-6 text-lg font-semibold text-gray-800">
+        <h3 className="text-xl font-bold text-gray-700 mb-2">
           TU9 & Public Universities
         </h3>
-        <p className="text-sm text-orange-500">
-          Germany’s top technical institutions
+        <p className="text-sm font-medium" style={{ color: '#f46c44' }}>
+          Germany&apos;s top technical institutions
         </p>
       </div>
 
       {/* Italian Public */}
-      <div className="text-center">
-        <div className="relative mx-auto w-[260px] h-[160px] rotate-[2deg]">
-          <Image
-            src="https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseo_2020.jpg"
-            alt="Italian Public Universities"
-            fill
-            className="object-cover rounded-[22px] border-2 border-orange-400"
-          />
+      <div className="text-center group">
+        <div className="relative mx-auto w-full max-w-[280px] mb-6">
+          <svg viewBox="0 0 300 200" className="w-full h-auto" style={{ filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))' }}>
+            <defs>
+              <clipPath id="tiltedClip4">
+                <path d="M 50 8 Q 20 8 15 35 L 15 165 Q 15 192 42 196 L 250 184 Q 285 184 290 155 L 290 45 Q 290 20 265 20 L 50 8 Z" />
+              </clipPath>
+            </defs>
+            <image
+              href="https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=400&h=300&fit=crop"
+              x="0" y="0" width="300" height="200"
+              clipPath="url(#tiltedClip4)"
+              preserveAspectRatio="xMidYMid slice"
+            />
+            <path d="M 50 8 Q 20 8 15 35 L 15 165 Q 15 192 42 196 L 250 184 Q 285 184 290 155 L 290 45 Q 290 20 265 20 L 50 8 Z" 
+                  fill="none" 
+                  stroke="#f46c44" 
+                  strokeWidth="3" />
+          </svg>
         </div>
-        <h3 className="mt-6 text-lg font-semibold text-gray-800">
+        <h3 className="text-xl font-bold text-gray-700 mb-2">
           Italian Public Universities
         </h3>
-        <p className="text-sm text-orange-500">
+        <p className="text-sm font-medium" style={{ color: '#f46c44' }}>
           Affordable education with global value
         </p>
       </div>
@@ -1009,63 +944,83 @@ export default function Home() {
       {/* CARD */}
       {[
         {
-          icon: "☀️",
+          icon: "💡",
           tag: "10 Essential",
           title: "Study Abroad Tips",
-          img: "https://images.unsplash.com/photo-1522202176988-8838c5c5f49?w=600",
+          img: "/t1.png",
         },
         {
           icon: "🎓",
           tag: "Top 10",
           title: "Scholarships for Indian Students",
-          img: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600",
+          img: "/t2.png",
         },
         {
           icon: "📘",
           tag: "Complete Guide to",
           title: "Admissions Success",
-          img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600",
+          img: "/t3.png",
         },
         {
           icon: "📝",
           tag: "IELTS, GRE & More:",
           title: "Acing Entrance Exams",
-          img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600",
+          img: "/t4.png",
         },
       ].map((card, i) => (
         <div key={i}>
-          <div className="relative rounded-[28px] border border-orange-400 bg-gradient-to-br from-[#fde7dc] to-white overflow-hidden">
-
-            {/* ICON — PSD POSITION */}
-            <div className="absolute top-[18px] left-[24px] z-10">
-              <div className="w-11 h-11 bg-orange-500 rounded-full flex items-center justify-center text-white text-lg">
-                {card.icon}
-              </div>
-            </div>
-
-            {/* CONTENT */}
-            <div className="flex items-center justify-between px-8 pt-16 pb-8">
-              <div>
-                <p className="text-orange-500 font-semibold">{card.tag}</p>
-                <h3 className="text-2xl font-semibold text-gray-900 leading-snug">
-                  {card.title.split(" ").slice(0, 2).join(" ")} <br />
+          <svg viewBox="0 0 650 380" className="w-full h-auto" style={{ filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))' }}>
+            <defs>
+              <clipPath id={`blogImageClip${i}`}>
+                <path d="M 390 80 Q 370 80 365 100 L 355 235 Q 355 255 375 260 L 595 248 Q 620 248 625 223 L 635 110 Q 635 90 615 90 L 390 80 Z" />
+              </clipPath>
+              <linearGradient id={`gradient${i}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#fde7dc" />
+                <stop offset="100%" stopColor="#ffffff" />
+              </linearGradient>
+            </defs>
+            
+            {/* Outer border with gradient background */}
+            <path d="M 60 15 Q 30 15 25 45 L 15 310 Q 15 340 45 345 L 600 328 Q 635 328 640 293 L 650 52 Q 650 22 620 20 L 60 15 Z" 
+                  fill="url(#gradient${i})" />
+            
+            {/* Icon circle */}
+            <circle cx="80" cy="60" r="30" fill="#f46c44" />
+            <text x="80" y="72" textAnchor="middle" fontSize="28">{card.icon}</text>
+            
+            {/* Text content - Left side with better spacing */}
+            <text x="80" y="150" fill="#f46c44" fontSize="24" fontWeight="700">{card.tag}</text>
+            <text x="40" y="195" fill="#1f2937" fontSize="30" fontWeight="700">
+              {card.title.split(" ").slice(0, 2).join(" ")}
+            </text>
+            <text x="80" y="235" fill="#1f2937" fontSize="30" fontWeight="700">
                   {card.title.split(" ").slice(2).join(" ")}
-                </h3>
-              </div>
-
-              <div className="relative w-36 h-28 rounded-xl overflow-hidden">
-                <Image
-                  src={card.img}
-                  alt=""
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-
-            {/* BOTTOM STRIP */}
-            <div className="h-6 bg-orange-500 rounded-b-[28px]" />
-          </div>
+            </text>
+            
+            {/* Image with tilted border - properly positioned */}
+            <image
+              href={card.img}
+              x="360" y="75" width="280" height="190"
+              clipPath={`url(#blogImageClip${i})`}
+              preserveAspectRatio="xMidYMid slice"
+            />
+            
+            {/* Image border - tilted */}
+            <path d="M 390 80 Q 370 80 365 100 L 355 235 Q 355 255 375 260 L 595 248 Q 620 248 625 223 L 635 110 Q 635 90 615 90 L 390 80 Z" 
+                  fill="none" 
+                  stroke="#f46c44" 
+                  strokeWidth="2.5" />
+            
+            {/* Bottom orange strip - curved */}
+            <path d="M 45 318 Q 15 318 15 310 L 15 325 Q 15 345 45 345 L 600 328 Q 635 328 640 308 L 640 293 Q 640 318 600 320 L 45 318 Z" 
+                  fill="#f46c44" />
+            
+            {/* Outer border - tilted */}
+            <path d="M 60 15 Q 30 15 25 45 L 15 310 Q 15 340 45 345 L 600 328 Q 635 328 640 293 L 650 52 Q 650 22 620 20 L 60 15 Z" 
+                  fill="none" 
+                  stroke="#f46c44" 
+                  strokeWidth="3" />
+          </svg>
 
           {/* TEXT BELOW CARD */}
           <div className="mt-5">
@@ -1084,23 +1039,23 @@ export default function Home() {
 </section>
 
       {/* Footer */}
-       <footer className="bg-[#fef5f1] py-20">
-      <div className="max-w-7xl mx-auto px-6">
+       <footer className="bg-[#fef5f1] pt-32 pb-20 overflow-visible">
+      <div className="max-w-7xl mx-auto px-6 overflow-visible">
 
         {/* ================= MAIN FOOTER CARD with Orange Border ================= */}
-        <div className="border-[3px] border-orange-400 rounded-[50px] px-12 pt-0 pb-12 bg-[#fef5f1] relative">
+        <div className="border-[3px] border-[#f46c44] rounded-[50px] px-12 pt-8 pb-12 bg-[#fef5f1] relative shadow-lg">
 
-          {/* ================= TOP IMAGE STRIP with Orange Border - Positioned Above ================= */}
-          <div className="w-full mb-12 -mt-16">
-            <div className="relative h-[200px] rounded-[40px] border-[8px] border-orange-500 overflow-hidden bg-white shadow-lg">
+          {/* ================= TOP IMAGE STRIP with Orange Border - Positioned Upward ================= */}
+          <div className="w-full mb-12 -mt-20">
+            <div className="relative h-[180px] rounded-[50px] border-[10px] border-[#f46c44] overflow-hidden bg-white shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1607237138185-eedd9c632b0b?w=1200&h=300&fit=crop"
-                alt="University Buildings"
+                src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&h=300&fit=crop"
+                alt="European Landmarks"
                 className="w-full h-full object-cover grayscale"
-                style={{ objectPosition: "center 40%" }}
+                style={{ objectPosition: "center center" }}
               />
-            </div>
           </div>
+        </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
 
@@ -1195,6 +1150,7 @@ export default function Home() {
 
       </div>
     </footer>
+
     </div>
   );
-};
+}
