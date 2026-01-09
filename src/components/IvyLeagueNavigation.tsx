@@ -1,10 +1,9 @@
 'use client';
-
 import { useState, useEffect } from 'react';
-import TopBar from "@/components/TopBar";
-import Header from "@/components/Header";
+import IvyLeagueTopBar from "@/components/IvyLeagueTopBar";
+import Header from "@/components/IvyLeagueHeader";
 
-export default function Navigation() {
+export default function IvyLeagueNavigation() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -19,7 +18,7 @@ export default function Navigation() {
 
   return (
     <div 
-      className="fixed top-0 left-0 right-0 z-[9999] transition-all duration-300"
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300`}
       style={{ 
         position: 'fixed', 
         top: 0, 
@@ -28,10 +27,11 @@ export default function Navigation() {
         zIndex: 9999 
       }}
     >
-      <TopBar isScrolled={isScrolled} />
-      <div className={isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}>
+      <IvyLeagueTopBar isScrolled={isScrolled} />
+      <div className="bg-white shadow-md" style={{ backgroundColor: 'white' }}>
         <Header isScrolled={isScrolled} />
       </div>
     </div>
   );
 }
+

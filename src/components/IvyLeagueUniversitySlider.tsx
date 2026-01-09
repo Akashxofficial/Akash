@@ -4,8 +4,8 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import 'keen-slider/keen-slider.min.css';
 
-export default function UniversitySlider() {
-  const sliderRef = useRef(null);
+export default function IvyLeagueUniversitySlider() {
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const keenSlider = async () => {
@@ -19,20 +19,20 @@ export default function UniversitySlider() {
             mode: 'free',
             slides: {
               origin: 'center',
-              perView: 2.5,
-              spacing: 2,
+              perView: 0,
+              spacing: 20,
             },
             breakpoints: {
-              '(min-width: 640px)': {
+              '(min-width: 840px)': {
                 slides: {
                   perView: 3.5,
-                  spacing: 3,
+                  spacing: 0,
                 },
               },
               '(min-width: 1024px)': {
                 slides: {
-                  perView: 8.5,
-                  spacing: 4,
+                  perView: 6,
+                  spacing: 0,
                 },
               },
             },
@@ -92,51 +92,24 @@ export default function UniversitySlider() {
   ];
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-12">
-          <span style={{ color: '#f46c44' }}>International</span> University Partners
-        </h2>
-        
-        <div ref={sliderRef} className="keen-slider">
-          {universities.map((university) => {
-            const pathData = "M 50 8 Q 20 8 15 35 L 15 165 Q 15 192 42 196 L 250 184 Q 285 184 290 155 L 290 45 Q 290 20 265 20 L 50 8 Z";
-            return (
-              <div key={university.id} className="keen-slider__slide">
-                <div className="relative w-full h-24 bg-white rounded-lg p-4 overflow-visible" style={{ filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))' }}>
-                  {/* SVG Border - properly sized */}
-                  <svg
-                    viewBox="0 0 300 200"
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                    }}
-                  >
-                    <path
-                      d={pathData}
-                      fill="none"
-                      stroke="#f46c44"
-                      strokeWidth="1.5"
-                    />
-                  </svg>
-                  {/* Content */}
-                  <div className="relative z-10 flex items-center justify-center h-full">
-                    <Image 
-                      src={university.src}
-                      alt={university.alt}
-                      width={120}
-                      height={60}
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
+    <div className="overflow-hidden">
+      <div ref={sliderRef} className="keen-slider">
+        {universities.map((university) => (
+          <div key={university.id} className="keen-slider__slide">
+            <div className="flex flex-col items-center justify-center px-4">
+              <div className="flex items-center justify-center h-26 w-full">
+                <Image 
+                  src={university.src}
+                  alt={university.alt}
+                  width={500}
+                  height={360}
+                  className="object-contain"
+                />
               </div>
-            );
-          })}
-        </div>
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }
-

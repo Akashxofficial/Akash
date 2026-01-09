@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import 'keen-slider/keen-slider.min.css';
 
 export default function UniversitySliderClient() {
-  const sliderRef = useRef(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const keenSlider = async () => {
       const KeenSlider = (await import('keen-slider')).default;
-
+      
       if (sliderRef.current) {
         const slider = new KeenSlider(
           sliderRef.current,
@@ -20,19 +20,19 @@ export default function UniversitySliderClient() {
             slides: {
               origin: 'center',
               perView: 2.5,
-              spacing: 16,
+              spacing: 0,
             },
             breakpoints: {
               '(min-width: 640px)': {
                 slides: {
                   perView: 3.5,
-                  spacing: 20,
+                  spacing: 0,
                 },
               },
               '(min-width: 1024px)': {
                 slides: {
-                  perView: 5.5,
-                  spacing: 24,
+                  perView: 8.5,
+                  spacing: 0,
                 },
               },
             },
@@ -68,134 +68,75 @@ export default function UniversitySliderClient() {
             },
           ]
         );
+
+        return () => {
+          slider.destroy();
+        };
       }
     };
 
     keenSlider();
   }, []);
 
+  const universities = [
+    { id: 1, src: '/university1.svg', alt: 'University 1' },
+    { id: 2, src: '/university2.svg', alt: 'University 2' },
+    { id: 3, src: '/university3.svg', alt: 'University 3' },
+    { id: 4, src: '/university4.svg', alt: 'University 4' },
+    { id: 5, src: '/university5.svg', alt: 'University 5' },
+    { id: 6, src: '/university6.svg', alt: 'University 6' },
+    { id: 7, src: '/university7.svg', alt: 'University 7' },
+    { id: 8, src: '/university8.svg', alt: 'University 8' },
+    { id: 9, src: '/university9.svg', alt: 'University 9' },
+    { id: 10, src: '/university10.svg', alt: 'University 10' },
+  ];
+
   return (
-    <section className="py-16 overflow-hidden" style={{ backgroundColor: '#ffeae5' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-          International University Partners
+    <section className="pt-0 pb-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          <span style={{ color: '#f46c44' }}>International</span>{" "}
+          <span className="text-gray-800">University Partners</span>
         </h2>
-        <div className="w-full max-w-full overflow-hidden">
-          <div ref={sliderRef} className="keen-slider">
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university1.svg" 
-                  alt="University Partner 1"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
+        
+        <div ref={sliderRef} className="keen-slider">
+        {universities.map((university, index) => {
+          const pathData = "M 50 8 Q 20 8 15 35 L 15 165 Q 15 192 42 196 L 250 184 Q 285 184 290 155 L 290 45 Q 290 20 265 20 L 50 8 Z";
+          return (
+            <div key={university.id} className="keen-slider__slide">
+              <div className="relative w-full h-24 bg-white rounded-lg p-4 overflow-visible" style={{ filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.1))' }}>
+                {/* SVG Border - properly sized */}
+                <svg
+                  viewBox="0 0 300 200"
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                  }}
+                >
+                  <path
+                    d={pathData}
+                    fill="none"
+                    stroke="#f46c44"
+                    strokeWidth="1.5"
+                  />
+                </svg>
+                {/* Content */}
+                <div className="relative z-10 flex items-center justify-center h-full">
+                  <Image 
+                    src={university.src}
+                    alt={university.alt}
+                    width={120}
+                    height={60}
+                    className="object-contain"
+                  />
+                </div>
               </div>
             </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university2.svg" 
-                  alt="University Partner 2"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university3.svg" 
-                  alt="University Partner 3"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university4.svg" 
-                  alt="University Partner 4"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university5.svg" 
-                  alt="University Partner 5"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university6.svg" 
-                  alt="University Partner 6"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university7.svg" 
-                  alt="University Partner 7"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university8.svg" 
-                  alt="University Partner 8"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university9.svg" 
-                  alt="University Partner 9"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-            <div className="keen-slider__slide">
-              <div className="flex items-center justify-center h-20 bg-gray-50 rounded-lg border border-gray-200">
-                <Image 
-                  src="/university10.svg" 
-                  alt="University Partner 10"
-                  width={120}
-                  height={68}
-                  className="object-contain"
-                />
-              </div>
-            </div>
-          </div>
+          );
+        })}
         </div>
       </div>
     </section>
   );
 }
-
