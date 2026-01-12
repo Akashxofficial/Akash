@@ -2,9 +2,12 @@ import Image from "next/image";
 import IvyLeagueNavigation from "@/components/IvyLeagueNavigation";
 import ImageTestimonial from "@/components/ImageTestimonial";
 import IvyLeagueUniversitySlider from "@/components/IvyLeagueUniversitySlider";
+<<<<<<< HEAD
 import { Footer } from "@/components/Footer";
 import VideoBackground from "@/components/VideoBackground";
 import StatisticsSlider from "@/components/StatisticsSlider";
+=======
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
 
 export default function IvyLeaguePage() {
   return (
@@ -14,19 +17,33 @@ export default function IvyLeaguePage() {
       {/* Hero Section */}
       <section className="relative h-[700px] overflow-hidden">
         <div className="absolute inset-0">
+<<<<<<< HEAD
           <VideoBackground 
             videos={[
               "/0_Queens_University_Belfast_Belfast_1920x1080.mp4",
               "/4730892_Cheyenne_Wyoming_1920x1080.mp4"
             ]} 
+=======
+          <img 
+            src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1920&h=700&fit=crop"
+            alt="European City Aerial View"
+            className="w-full h-full object-cover"
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
           />
           <div className="absolute inset-0 bg-black opacity-60"></div>
         </div>
         <div className="relative z-10 h-full flex flex-col justify-center items-start text-left px-4 sm:px-6 lg:px-8">
+<<<<<<< HEAD
           <div className="max-w-4xl" style={{ marginLeft: '60px', transform: 'none', perspective: 'none' }}>
             <h1 className="text-5xl md:text-6xl lg:text-7xl text-white mb-0 leading-tight" style={{ fontFamily: "'Mileast', 'Playfair Display', 'Cormorant Garamond', Georgia, serif", fontWeight: 500, textAlign: 'left', transform: 'none', transformStyle: 'flat', transformOrigin: 'initial', letterSpacing: 'normal' }}>
               <span className="block" style={{ transform: 'none', display: 'block' }}>Your path to the</span>
               <span className="block" style={{ transform: 'none', display: 'block' }}>Ivy League Universities</span>
+=======
+          <div className="max-w-4xl" style={{ marginLeft: '60px' }}>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight" style={{ fontFamily: "'Times New Roman', Times, serif", fontWeight: 'bold', textAlign: 'left' }}>
+              <span className="block">Your path to the</span>
+              <span className="block">Ivy League Universities</span>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
             </h1>
             <p className="text-lg md:text-xl text-white mb-10 leading-relaxed" style={{ textAlign: 'left' }}>
               GAway is a league of its own. We help you get into the Ivy League and other top universities in the USA, UK, and Canada. We&apos;ll help you get into the Ivy League and top graduate schools.
@@ -37,9 +54,15 @@ export default function IvyLeaguePage() {
       </section>
 
       {/* Our Global University Network */}
+<<<<<<< HEAD
       <section className="py-5 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-600">
+=======
+      <section className="py-10 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-16 text-gray-800">
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
             Our Global University Network
           </h2>
           <IvyLeagueUniversitySlider />
@@ -47,6 +70,7 @@ export default function IvyLeaguePage() {
       </section>
 
       {/* Ivy Coach's College Admissions Track Record */}
+<<<<<<< HEAD
       <section className="py-5 bg-gray-50" style={{ overflow: 'visible' }}>
         <div className="max-w-7xl mx-auto px-4" style={{ overflow: 'visible' }}>
           {/* Border line above */}
@@ -62,10 +86,28 @@ export default function IvyLeaguePage() {
               <span className="block">who earned admission to the following schools in the Early round.</span>
             </p>
             <p className="text-sm text-gray-800 font-semibold mx-auto" style={{ textAlign: 'center' }}>
+=======
+      <section className="py-5 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Border line above */}
+          <div className="mb-8 mx-auto" style={{ borderTop: '2px solid #9ca3af', width: '50%' }}></div>
+          
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 uppercase tracking-wide" style={{ color: '#f46c44', fontFamily: 'serif', textAlign: 'center' }}>
+              <span className="block">IVY COACH&apos;S COLLEGE</span>
+              <span className="block">ADMISSIONS TRACK RECORD</span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-5xl mx-auto mb-2" style={{ textAlign: 'center' }}>
+              <span className="block">The percentage of Ivy Coach&apos;s packaged clients over the last 10 years</span>
+              <span className="block">who earned admission to the following schools in the Early round.</span>
+            </p>
+            <p className="text-sm text-gray-700 italic mx-auto" style={{ textAlign: 'center' }}>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
               At most of these schools, we typically have 3-4 applicants annually.
             </p>
           </div>
 
+<<<<<<< HEAD
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start" style={{ overflow: 'visible' }}>
             {/* Left Panel - Proven Success */}
             <div>
@@ -111,18 +153,51 @@ export default function IvyLeaguePage() {
               <div className="text-left">
                 <div className="text-7xl  mb-3" style={{ color: '#f46c44' }}>98%</div>
                 <p className="text-xl text-gray-700 font">of our students are admitted to atleast 1 of their top 5 college choices</p>
+=======
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Left Panel - Proven Success */}
+            <div>
+              <h3 className="text-3xl font-bold text-gray-800 mb-8">
+                Numbers Don&apos;t Lie. Proven Success. Unmatched Results.
+              </h3>
+
+              {/* Student Image */}
+              <div className="mb-8 relative">
+                <Image 
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=500&fit=crop"
+                  alt="Student Success"
+                  width={500}
+                  height={450}
+                  className="w-full h-[450px] object-cover rounded-lg shadow-lg"
+                  unoptimized
+                />
+              </div>
+
+              {/* 98% Stat */}
+              <div className="text-center">
+                <div className="text-7xl font-bold mb-3" style={{ color: '#f46c44' }}>98%</div>
+                <p className="text-2xl text-gray-700 font-semibold">of our clients get into their top 3 choices</p>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
               </div>
             </div>
 
             {/* Right Panel - Bar Chart */}
+<<<<<<< HEAD
             <div style={{ overflow: 'visible', paddingLeft: '10px' }}>
               {/* Large Number Box - Tilted */}
               <div className="mb-1 text-left transform rotate-3" style={{ borderWidth: '1.5px', borderStyle: 'solid', borderColor: '#f46c44', transform: 'rotate(-3deg)', borderRadius: '20px', padding: '32px', overflow: 'visible', marginLeft: '150px' }}>
                 <div className="text-7xl mb-0" style={{ color: '#f46c44', fontFamily: "'Mileast', 'Playfair Display', 'Cormorant Garamond', Georgia, serif", fontWeight: 500 }}>1,485</div>
+=======
+            <div>
+              {/* Large Number Box - Tilted */}
+              <div className="border-4 p-8 mb-8 text-center transform rotate-3" style={{ borderColor: '#f46c44', transform: 'rotate(-3deg)', borderRadius: '20px' }}>
+                <div className="text-7xl font-bold mb-2" style={{ color: '#f46c44' }}>1,485</div>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                 <p className="text-gray-600 text-lg">Total Offers in Last 10 Years</p>
               </div>
 
               <div className="bg-white p-8 rounded-lg shadow-lg">
+<<<<<<< HEAD
                 <h4 className="text-2xl font-bold mb-8 text-gray-600" style={{ fontFamily: "'Mileast', 'Playfair Display', 'Cormorant Garamond', Georgia, serif" }}>
                   <span className="border-b-2 border-gray-300 pb-2 inline-block">College Specific Acceptance Rates</span>
                 </h4>
@@ -137,10 +212,25 @@ export default function IvyLeaguePage() {
                   <div className="w-[px] h-full min-h-[4px] bg-gray-300 self-stretch"></div>
                   <div className="flex-5 text-center">
                     <span className="text-xs font-semibold" style={{ color: '#f46c44' }}>GAway Student Admit Rate</span>
+=======
+                <h4 className="text-2xl font-bold mb-8 text-gray-800">College Specific Acceptance Rates</h4>
+
+                {/* Table Header */}
+                <div className="flex items-center gap-4 pb-3 mb-4 border-b-2 border-gray-300">
+                  <div className="w-12 h-12"></div>
+                  <div className="w-32"></div>
+                  <div className="flex-1 text-center">
+                    <span className="text-sm font-semibold text-gray-600">General Admit Rate</span>
+                  </div>
+                  <div className="w-px h-8 bg-gray-300"></div>
+                  <div className="flex-1 text-center">
+                    <span className="text-sm font-semibold" style={{ color: '#f46c44' }}>GAway Student Admit Rate</span>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                   </div>
                 </div>
 
                 {/* Table Format with Both Columns */}
+<<<<<<< HEAD
                 <div className="space-y-0">
                   {[
                     { name: 'Harvard', generalRate: 3.2, gawayRate: 20.0, logo: '/ivy/Harvard_University_coat_of_arms.svg', alt: 'Harvard' },
@@ -164,6 +254,24 @@ export default function IvyLeaguePage() {
                           className="object-contain w-full h-full p-1.5"
                           unoptimized
                         />
+=======
+                <div className="space-y-4">
+                  {[
+                    { name: 'Harvard', generalRate: 3.2, gawayRate: 20.0, logo: 'H' },
+                    { name: 'Stanford', generalRate: 4.3, gawayRate: 80.0, logo: 'S' },
+                    { name: 'Yale', generalRate: 4.6, gawayRate: 70.2, logo: 'Y' },
+                    { name: 'Columbia', generalRate: 3.9, gawayRate: 78.1, logo: 'C' },
+                    { name: 'UPenn', generalRate: 5.9, gawayRate: 83.3, logo: 'UP' },
+                    { name: 'Dartmouth', generalRate: 6.2, gawayRate: 77.0, logo: 'D' },
+                    { name: 'Princeton', generalRate: 5.7, gawayRate: 60.6, logo: 'P' },
+                    { name: 'Cornell', generalRate: 7.3, gawayRate: 80.6, logo: 'C' },
+                    { name: 'MIT', generalRate: 6.5, gawayRate: 85.0, logo: 'M' }
+                  ].map((uni, i) => (
+                    <div key={i} className="flex items-center gap-4 pb-4 border-b border-gray-100 last:border-0">
+                      {/* University Icon/Logo */}
+                      <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-sm font-bold text-gray-700">{uni.logo}</span>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                       </div>
                       
                       {/* University Name */}
@@ -176,6 +284,7 @@ export default function IvyLeaguePage() {
                       </div>
                       
                       {/* Vertical Divider Line */}
+<<<<<<< HEAD
                       <div className="w-px h-8 bg-gray-300"></div>
                       
                       {/* GAway Student Admit Rate Column - Orange */}
@@ -199,13 +308,35 @@ export default function IvyLeaguePage() {
                           >
                             {uni.gawayRate}%
                           </span>
+=======
+                      <div className="w-px h-12 bg-gray-300"></div>
+                      
+                      {/* GAway Student Admit Rate Column - Orange */}
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-xs" style={{ color: '#f46c44' }}></span>
+                          <span className="text-sm font-bold" style={{ color: '#f46c44' }}>{uni.gawayRate}%</span>
+                        </div>
+                        <div className="bg-gray-200 rounded-full h-3 relative overflow-hidden">
+                          <div 
+                            className="h-full rounded-full transition-all duration-500"
+                            style={{ 
+                              width: `${(uni.gawayRate / 85.0) * 100}%`,
+                              backgroundColor: '#f46c44'
+                            }}
+                          ></div>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                         </div>
                       </div>
                     </div>
                   ))}
                 </div>
                 
+<<<<<<< HEAD
                 <button className="mt-8 w-full text-gray-700 px-6 py-3 rounded-lg font-semibold hover:text-orange-500 transition border-2" style={{ borderColor: '#f46c44', outline: 'none', background: 'transparent' }}>
+=======
+                <button className="mt-8 w-full bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition">
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                   VIEW STATISTICS
                 </button>
               </div>
@@ -221,7 +352,11 @@ export default function IvyLeaguePage() {
             <h2 className="text-4xl font-bold mb-3 uppercase tracking-wide" style={{ color: '#f46c44' }}>
               THE IVY COACH DAILY
             </h2>
+<<<<<<< HEAD
             <p className="text-lg text-gray-600 ">Way To Tell It Like It Is, Ivy Coach</p>
+=======
+            <p className="text-lg text-gray-600 italic">Way To Tell It Like It Is, Ivy Coach</p>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10" style={{ width: '100%' }}>
@@ -265,7 +400,11 @@ export default function IvyLeaguePage() {
           </div>
 
           <div className="text-center">
+<<<<<<< HEAD
             <button className="text-gray-700 px-10 py-3 rounded-lg font-semibold hover:text-orange-500 transition border-2" style={{ borderColor: '#f46c44', outline: 'none', background: 'transparent' }}>
+=======
+            <button className="bg-orange-500 text-white px-10 py-3 rounded-lg font-semibold hover:bg-orange-600 transition">
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
               VIEW ALL
             </button>
           </div>
@@ -275,7 +414,29 @@ export default function IvyLeaguePage() {
       {/* Statistics Bar */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
+<<<<<<< HEAD
           <StatisticsSlider />
+=======
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
+            {[
+              { num: '244', text: 'Offers to Cornell' },
+              { num: '109', text: 'Offers to Princeton' },
+              { num: '187', text: 'Offers to Stanford' },
+              { num: '130', text: 'Offers to Yale' },
+              { num: '139', text: 'Offers to Columbia' },
+              { num: '24', text: 'Offers to Oxford' },
+              { num: '365', text: 'Offers to UC Berkeley' },
+              { num: '338', text: 'Offers to UPenn' }
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="text-4xl md:text-5xl font-bold mb-2" style={{ color: '#f46c44' }}>
+                  {stat.num}
+                </div>
+                <p className="text-sm md:text-base text-gray-700 font-medium">{stat.text}</p>
+              </div>
+            ))}
+          </div>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
         </div>
       </section>
 
@@ -452,7 +613,13 @@ export default function IvyLeaguePage() {
       {/* Image Testimonials */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
+<<<<<<< HEAD
           
+=======
+          <h2 className="text-4xl font-bold text-center mb-16" style={{ color: '#f46c44' }}>
+            Image Testimonials
+          </h2>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
           <ImageTestimonial />
         </div>
       </section>
@@ -488,7 +655,67 @@ export default function IvyLeaguePage() {
       </section>
 
       {/* Footer */}
+<<<<<<< HEAD
       <Footer />
+=======
+      <footer className="bg-gray-900 text-white pt-20 pb-12">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="mb-16">
+            <img 
+              src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&h=400&fit=crop"
+              alt="City skyline"
+              className="w-full h-[300px] object-cover rounded-lg mb-12 grayscale opacity-80"
+            />
+            
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
+              <div className="md:col-span-2">
+                <h3 className="text-3xl font-bold mb-6">GAway</h3>
+                <p className="text-gray-400 mb-6 leading-relaxed">
+                  GAway is a premier education consultancy that provides comprehensive services to students aspiring to study abroad.
+                </p>
+                <button className="bg-orange-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-orange-600 transition">
+                  GET STARTED
+                </button>
+              </div>
+
+              <div>
+                <h4 className="font-bold mb-6 text-lg">Study Abroad</h4>
+                <ul className="space-y-3 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition">About Us</a></li>
+                  <li><a href="#" className="hover:text-white transition">Our Services</a></li>
+                  <li><a href="#" className="hover:text-white transition">Testimonials</a></li>
+                  <li><a href="#" className="hover:text-white transition">Our Team</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-bold mb-6 text-lg">Our Services</h4>
+                <ul className="space-y-3 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition">Ivy League</a></li>
+                  <li><a href="#" className="hover:text-white transition">UK Admissions</a></li>
+                  <li><a href="#" className="hover:text-white transition">Canada Admissions</a></li>
+                  <li><a href="#" className="hover:text-white transition">Graduate Admissions</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-bold mb-6 text-lg">Resources</h4>
+                <ul className="space-y-3 text-gray-400">
+                  <li><a href="#" className="hover:text-white transition">Blog</a></li>
+                  <li><a href="#" className="hover:text-white transition">FAQs</a></li>
+                  <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
+                  <li><a href="#" className="hover:text-white transition">Terms & Conditions</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
+            <p>&copy; 2023 GAway Global. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
     </div>
   );
 }

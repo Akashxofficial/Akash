@@ -133,7 +133,11 @@ export default function ImageTestimonial() {
   return (
     <section className="py-10" style={{ backgroundColor: '#FCEEEB', overflow: 'visible' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ overflow: 'visible' }}>
+<<<<<<< HEAD
         <h2 className="text-4xl font-bold text-center mb-0">
+=======
+        <h2 className="text-4xl font-bold text-center mb-12">
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
           <span style={{ color: '#f46c44' }}>Image</span>{" "}
           <span className="text-gray-600">Testimonials</span>
         </h2>

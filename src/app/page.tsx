@@ -27,7 +27,11 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
+<<<<<<< HEAD
       <section className="relative py-5 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden max-w-full" style={{ paddingTop: '80px', overflowX: 'hidden' }}>
+=======
+      <section className="relative py-5 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden max-w-full" style={{ paddingTop: '120px', overflowX: 'hidden' }}>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
         {/* Background Image with Planes - Positioned below Countries nav */}
         <div className="absolute hidden md:block" style={{
           zIndex: 1,
@@ -54,7 +58,11 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto relative z-10 overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
+<<<<<<< HEAD
             <div className="ml-8 lg:ml-16 mt-8 lg:mt-10">
+=======
+            <div>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
               <h1 className="text-3xl font-bold mb-4 leading-tight">
                 <span className="block text-gray-600 whitespace-nowrap">Your Gateway to the World&apos;s</span>
                 <span className="block relative inline-block mt-2" style={{ color: '#f46c44' }}>
@@ -68,14 +76,23 @@ export default function Home() {
               <p className="text-sm sm:text-base lg:text-lg text-gray-700 mb-6 sm:mb-8 leading-relaxed">
                 Specialized admissions guidance for <span style={{ color: '#f46c44', fontWeight: 'bold' }}>Ivy League, Russell Group, German & Italian Public Universities</span>
               </p>
+<<<<<<< HEAD
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-25" style={{ perspective: '1000px' }}>
                 <button className="text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-2xl text-base sm:text-lg font-semibold flex items-center justify-center gap-2 transition-all hover:opacity-90" style={{ backgroundColor: '#f46c44', transform: 'perspective(1000px) rotateY(12deg)', transformStyle: 'preserve-3d', borderRadius: '16px' }}>
+=======
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <button className="text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-base sm:text-lg font-semibold flex items-center justify-center gap-2 transition-all hover:opacity-90" style={{ backgroundColor: '#f46c44' }}>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                   <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                   Get Free Counselling
                 </button>
+<<<<<<< HEAD
                 <button className="text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-2xl text-base sm:text-lg font-semibold hover:bg-black transition-all" style={{ backgroundColor: '#1f2937', transform: 'perspective(1000px) rotateY(15deg)', transformStyle: 'preserve-3d', borderRadius: '16px' }}>
+=======
+                <button className="bg-gray-900 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg text-base sm:text-lg font-semibold hover:bg-black transition-all">
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                   Check Your Eligibility
                 </button>
               </div>
@@ -132,6 +149,7 @@ export default function Home() {
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
                     <svg className="w-16 h-16 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+<<<<<<< HEAD
                       <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                     </svg>
                   </div>
@@ -140,12 +158,23 @@ export default function Home() {
                     <div className="text-lg text-gray-600 leading-relaxed">
                       <div>Successful</div>
                       <div>Student Applications</div>
+=======
+                      <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+                    </svg>
+                  </div>
+                  <div className="flex flex-col">
+                    <div className="text-3xl font-bold text-gray-800 mb-2">97%</div>
+                    <div className="text-lg text-gray-600 leading-relaxed">
+                      <div className="whitespace-nowrap">Application Acceptance</div>
+                      <div>in Public Universities</div>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                     </div>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
                     <svg className="w-16 h-16 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+<<<<<<< HEAD
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                   </div>
@@ -154,6 +183,16 @@ export default function Home() {
                     <div className="text-lg text-gray-600 leading-relaxed">
                       <div>Years of</div>
                       <div>Expert Experience</div>
+=======
+                      <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
+                    </svg>
+                  </div>
+                  <div className="flex flex-col">
+                    <div className="text-4xl font-bold text-gray-800 mb-2">#1</div>
+                    <div className="text-lg text-gray-600 leading-relaxed">
+                      <div>Consultancy for</div>
+                      <div>Top-Tier Programs</div>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                     </div>
                   </div>
                 </div>
@@ -173,7 +212,11 @@ export default function Home() {
       bg-no-repeat relative"> 
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden
         ">
+<<<<<<< HEAD
           <h2 className="text-5xl font-bold text-center mb-12">
+=======
+          <h2 className="text-3xl font-bold text-center mb-12">
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
             <span style={{ color: '#f46c44' }}>Why</span>{" "}
             <span className="text-gray-600">GAway Global ?</span>
           </h2>
@@ -198,11 +241,19 @@ export default function Home() {
                     </svg>
                   </div>
                   {/* Text container with white background to hide line */}
+<<<<<<< HEAD
                   <div className="relative z-10 px-2 py-1 inline-block">
                     <h3 className="text-2xl font-semibold mb-2" style={{ color: '#6b7280' }}>
                       Specialized ONLY
                     </h3>
                     <p className="text-xl leading-relaxed mt-1" style={{ color: '#f46c44' }}>
+=======
+                  <div className="bg-white relative z-10 px-2 py-1 inline-block">
+                    <h3 className="text-xl font-semibold mb-2" style={{ color: '#6b7280' }}>
+                      Specialized ONLY
+                    </h3>
+                    <p className="text-lg leading-relaxed mt-1" style={{ color: '#f46c44' }}>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                       in elite admissions
                     </p>
                   </div>
@@ -220,11 +271,19 @@ export default function Home() {
                     </svg>
                   </div>
                   {/* Text container with white background to hide line */}
+<<<<<<< HEAD
                   <div className="relative z-10 px-2 py-1 inline-block">
                     <h3 className="text-2xl font-semibold mb-1" style={{ color: '#f46c44' }}>
                       10+ <span style={{ color: '#6b7280' }}>yrs</span>
                     </h3>
                     <p className="text-xl leading-relaxed" style={{ color: '#6b7280' }}>
+=======
+                  <div className="bg-white relative z-10 px-2 py-1 inline-block">
+                    <h3 className="text-xl font-semibold mb-1" style={{ color: '#f46c44' }}>
+                      10+ <span style={{ color: '#6b7280' }}>yrs</span>
+                    </h3>
+                    <p className="text-lg leading-relaxed" style={{ color: '#6b7280' }}>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                       experience
                     </p>
                   </div>
@@ -243,11 +302,19 @@ export default function Home() {
                     </svg>
                   </div>
                   {/* Text container with white background to hide line */}
+<<<<<<< HEAD
                   <div className="relative z-10 px-2 py-1 inline-block">
                     <h3 className="text-xl font-semibold mb-1" style={{ color: '#f46c44' }}>
                       Transparent process
                     </h3>
                     <p className="text-lg leading-relaxed" style={{ color: '#6b7280' }}>
+=======
+                  <div className="bg-white relative z-10 px-2 py-1 inline-block">
+                    <h3 className="text-lg font-semibold mb-1" style={{ color: '#f46c44' }}>
+                      Transparent process
+                    </h3>
+                    <p className="text-base leading-relaxed" style={{ color: '#6b7280' }}>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                       (No hidden fees)
                     </p>
                   </div>
@@ -265,11 +332,19 @@ export default function Home() {
                     </svg>
                   </div>
                   {/* Text container with white background to hide line */}
+<<<<<<< HEAD
                   <div className="relative z-10 px-2 py-1 inline-block">
                     <h3 className="text-xl font-semibold mb-1" style={{ color: '#f46c44' }}>
                       Country-specific
                     </h3>
                     <p className="text-xl leading-relaxed" style={{ color: '#f46c44' }}>
+=======
+                  <div className="bg-white relative z-10 px-2 py-1 inline-block">
+                    <h3 className="text-lg font-semibold mb-1" style={{ color: '#f46c44' }}>
+                      Country-specific
+                    </h3>
+                    <p className="text-lg leading-relaxed" style={{ color: '#f46c44' }}>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                       experts
                     </p>
                   </div>
@@ -332,7 +407,11 @@ export default function Home() {
 
             {/* RIGHT CONTENT */}
             <div>
+<<<<<<< HEAD
               <h2 className="text-4xl font-bold leading-tight mb-6">
+=======
+              <h2 className="text-3xl font-bold leading-tight mb-6">
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                 <span style={{ color: '#f46c44' }}>Your Trusted Partner in</span>
                 <br />
                 <span className="text-gray-600">Immigration Services</span>
@@ -362,17 +441,27 @@ export default function Home() {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* Homepage Video Testimonial Section */}
       <section className="py-0 overflow-hidden bg-[url('/bg-01.jpg')]
+=======
+      {/* Ivy League Testimonial Section */}
+      <section className="py-16 overflow-hidden bg-[url('/bg-01.jpg')]
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
       bg-cover
       bg-center
       bg-no-repeat relative" style={{ backgroundColor: '#ffeae5' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<<<<<<< HEAD
           <h2 className="text-4xl font-bold text-center mb-0">
+=======
+          <h2 className="text-3xl font-bold text-center mb-12">
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
             <span style={{ color: '#f46c44' }}>Video</span>{" "}
             <span className="text-gray-600">Testimonials</span>
           </h2>
 
+<<<<<<< HEAD
           <div className="relative max-w-6xl mx-auto overflow-hidden">
             {/* Rotated Soft-Pink Background Layer */}
             <div 
@@ -385,6 +474,11 @@ export default function Home() {
             
             {/* Outer Pink Background */}
             <div className="relative rounded-[80px] p-12 overflow-hidden lg:overflow-hidden z-10" style={{ opacity: 0.85, backgroundColor: '#ffeae5' }}>
+=======
+          <div className="relative max-w-6xl mx-auto overflow-x-hidden">
+            {/* Outer Pink Background */}
+            <div className="relative rounded-[80px] p-12 overflow-hidden lg:overflow-visible" style={{ opacity: 0.85, borderColor: '#f5a899' }}>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
               <div className="flex flex-col lg:flex-row items-center gap-8 relative overflow-hidden lg:overflow-visible">
                 {/* Video Container with Tilted Border */}
                 <div className="flex-1 w-full lg:max-w-2xl">
@@ -437,8 +531,11 @@ export default function Home() {
                     minHeight: '260px',
                     maxWidth: '100%',
                     padding: '25px 40px 25px 35px',
+<<<<<<< HEAD
                     transform: 'none',
                     isolation: 'isolate',
+=======
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                   }}
                 >
                   {/* SVG Border with Background - Same as Image Testimonials */}
@@ -464,6 +561,7 @@ export default function Home() {
                     />
                   </svg>
 
+<<<<<<< HEAD
                   {/* Content inside border - Completely isolated, no transforms */}
                   <div 
                     className="relative z-10 h-full flex flex-col justify-center items-center overflow-hidden" 
@@ -506,6 +604,12 @@ export default function Home() {
                         textAlign: 'center',
                       }}
                     >
+=======
+                  {/* Content inside border */}
+                  <div className="relative z-10 h-full flex flex-col overflow-hidden" style={{ width: '100%', maxWidth: '100%', boxSizing: 'border-box', minWidth: 0 }}>
+                    <h3 className="text-xl lg:text-2xl font-bold mb-2 text-center break-words" style={{ color: '#d4ff00', wordWrap: 'break-word', overflowWrap: 'break-word', minWidth: 0 }}>Ivy League</h3>
+                    <p className="text-white text-xs lg:text-sm leading-relaxed flex-1 break-words overflow-hidden" style={{ wordWrap: 'break-word', overflowWrap: 'break-word', hyphens: 'auto', minWidth: 0, width: '100%', maxWidth: '100%' }}>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                       My <span style={{ color: '#d4ff00' }} className="font-semibold">Ivy League</span> admit was made possible by gaway global's{' '}
                       <span style={{ color: '#d4ff00' }} className="font-semibold">extensive admissions counselling support</span>{' '}
                       with my applications. Moreover, their online portal
@@ -530,6 +634,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+<<<<<<< HEAD
       </section>
 
       {/* Image Testimonials Section */}
@@ -537,11 +642,26 @@ export default function Home() {
 
       {/* Top Universities Hub Section */}
       <section className="py-10 overflow-hidden" style={{ backgroundColor: '#ffeae5' }}>
+=======
+      </section >
+
+    {/* Image Testimonials Section */ }
+    < ImageTestimonial />
+ 
+
+    {/* Top Universities Hub Section */ }
+    < section className = "py-20 overflow-hidden" style = {{ backgroundColor: '#ffeae5' }
+}>
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
 
     {/* Heading */}
     <div className="text-center mb-16">
+<<<<<<< HEAD
       <h2 className="text-4xl font-bold mb-4">
+=======
+      <h2 className="text-3xl font-bold mb-4">
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
         <span style={{ color: '#f46c44' }}>Top Universities</span>{" "}
         <span className="text-gray-700">Hub</span>
       </h2>
@@ -672,10 +792,17 @@ export default function Home() {
 
     </div>
   </div>
+<<<<<<< HEAD
 </section>
 
       {/* GA way global Blogs */}
       <section className="py-10 bg-gradient-to-b from-[#f3f3f3] to-white bg-[url('/bg-01.jpg')] bg-cover bg-center bg-no-repeat relative">
+=======
+</section >
+
+  {/* GA way global Blogs */ }
+  < section className = "py-24 bg-gradient-to-b from-[#f3f3f3] to-white bg-[url('/bg-01.jpg')] bg-cover bg-center bg-no-repeat relative" >
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
     <div className="max-w-6xl mx-auto px-4">
 
       {/* Heading */}
@@ -750,12 +877,24 @@ export default function Home() {
         ))}
 
       </div>
+<<<<<<< HEAD
     </div>
     </section>
 
       <Footer />
 
     </div>
+=======
+      </div>
+      
+    </section>
+
+
+
+      <Footer />
+
+    </div >
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
   );
 }
 

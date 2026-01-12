@@ -47,15 +47,25 @@ export default function IvyLeagueHeader({ isScrolled = false }: HeaderProps) {
   return (
     <header className="bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<<<<<<< HEAD
         <div className="flex justify-between items-center py-3 sm:py-0">
+=======
+        <div className="flex justify-between items-center py-3 sm:py-4">
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
           {/* Logo */}
           <div className="flex items-center">
             <Image
               src="/logo.png"
               alt="Gateway Global Logo"
+<<<<<<< HEAD
               width={200}
               height={67}
               className="object-contain w-36 h-auto sm:w-44 lg:w-52"
+=======
+              width={140}
+              height={47}
+              className="object-contain w-28 h-auto sm:w-36 lg:w-44"
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
             />
           </div>
 

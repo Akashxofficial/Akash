@@ -1,7 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
 import IvyLeagueTopBar from "@/components/IvyLeagueTopBar";
+<<<<<<< HEAD
 import IvyLeagueHeader from "@/components/IvyLeagueHeader";
+=======
+import Header from "@/components/IvyLeagueHeader";
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
 
 export default function IvyLeagueNavigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +33,11 @@ export default function IvyLeagueNavigation() {
     >
       <IvyLeagueTopBar isScrolled={isScrolled} />
       <div className="bg-white shadow-md" style={{ backgroundColor: 'white' }}>
+<<<<<<< HEAD
         <IvyLeagueHeader isScrolled={isScrolled} />
+=======
+        <Header isScrolled={isScrolled} />
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
       </div>
     </div>
   );

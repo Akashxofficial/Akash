@@ -79,6 +79,7 @@ export default function IvyLeagueUniversitySlider() {
   }, []);
 
   const universities = [
+<<<<<<< HEAD
     { id: 1, src: '/ivy/Harvard_University_coat_of_arms.svg', alt: 'Harvard University' },
     { id: 2, src: '/ivy/Yale_University_Shield_1.svg', alt: 'Yale University' },
     { id: 3, src: '/ivy/seal-and-logo-of-princeton-university-2JR4KMY.jpg', alt: 'Princeton University' },
@@ -101,6 +102,33 @@ export default function IvyLeagueUniversitySlider() {
                   height={150}
                   className="object-contain max-h-full max-w-full"
                   style={{ maxHeight: '150px', width: 'auto', height: 'auto' }}
+=======
+    { id: 1, src: '/university1.svg', alt: 'University 1' },
+    { id: 2, src: '/university2.svg', alt: 'University 2' },
+    { id: 3, src: '/university3.svg', alt: 'University 3' },
+    { id: 4, src: '/university4.svg', alt: 'University 4' },
+    { id: 5, src: '/university5.svg', alt: 'University 5' },
+    { id: 6, src: '/university6.svg', alt: 'University 6' },
+    { id: 7, src: '/university7.svg', alt: 'University 7' },
+    { id: 8, src: '/university8.svg', alt: 'University 8' },
+    { id: 9, src: '/university9.svg', alt: 'University 9' },
+    { id: 10, src: '/university10.svg', alt: 'University 10' },
+  ];
+
+  return (
+    <div className="overflow-hidden">
+      <div ref={sliderRef} className="keen-slider">
+        {universities.map((university) => (
+          <div key={university.id} className="keen-slider__slide">
+            <div className="flex flex-col items-center justify-center px-4">
+              <div className="flex items-center justify-center h-26 w-full">
+                <Image 
+                  src={university.src}
+                  alt={university.alt}
+                  width={500}
+                  height={360}
+                  className="object-contain"
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                 />
               </div>
             </div>

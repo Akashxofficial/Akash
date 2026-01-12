@@ -32,9 +32,15 @@ export function Footer() {
                 <Image
                   src="/logo.png"
                   alt="GAway Global"
+<<<<<<< HEAD
                   width={200}
                   height={67}
                   className="mb-4 w-40 sm:w-48 lg:w-[200px]"
+=======
+                  width={150}
+                  height={50}
+                  className="mb-4 w-32 sm:w-40 lg:w-[150px]"
+>>>>>>> 148a17589149d15dc0ce11272ea9fa0212c99e45
                 />
                 <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2 sm:mb-3">GA Way Global</h3>
                 <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 max-w-md lg:max-w-none">
